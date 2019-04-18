@@ -1,12 +1,10 @@
 class Complexnum 
     attr_accessor :real,:imag,:adding,:multiply
-    @@adding
-    @@multiply
+    @@adding=0
+    @@multiply=0
     def initialize(real,imag)
         @real=real
         @imag=imag
-        @@adding=0
-        @@multiply=0
     end
 
     def +(comp)
@@ -62,7 +60,9 @@ comp2=Complexnum.new(3,5)
 comp1+comp2
 comp1*comp2
 comp3=Complexnum.new(3,7)
-arr=[comp1,comp2,comp3]
+comp4=Complexnum.new(3,7)
+
+arr=[comp1,comp2,comp3,comp4]
 Complexnum.bulk_add(arr)
 Complexnum.bulk_multiply(arr)
 Complexnum.get_stats
