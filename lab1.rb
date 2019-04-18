@@ -1,7 +1,8 @@
 class Complexnum 
-    attr_accessor :real,:imag,:adding,:multiply
-    @@adding=0
-    @@multiply=0
+    attr_accessor :real,:imag
+    #@@adding=0
+    #@@multiply=0
+    @@operations={  :adding => 0, :multiply => 0 }
     def initialize(real,imag)
         @real=real
         @imag=imag
@@ -12,7 +13,8 @@ class Complexnum
         imag_adding=self.imag+comp.imag
         puts "the real adding =#{real_adding}"
         puts "the imag adding =#{imag_adding}"
-        @@adding+=1
+        #@@adding+=1
+        @@operations[:adding]=@@operations[:adding]+1 
         add_res=Complexnum.new(real_adding,imag_adding)
 
     end
@@ -22,7 +24,8 @@ class Complexnum
         imag_multi=self.imag*comp.imag
         puts "the real multiple =#{real_multi}"
         puts "the imag multiple =#{imag_multi}"
-        @@multiply+=1
+        #@@multiply+=1
+        @@operations[:multiply]=@@operations[:multiply]+1 
         multi_res=Complexnum.new(real_multi,imag_multi)
     end
 
@@ -48,8 +51,8 @@ class Complexnum
     end
 
     def self.get_stats
-        puts "The adding used #{@@adding} times"
-        puts "The multipling used #{@@multiply} times"
+        puts "The adding used #{@@operations[:adding]} times"
+        puts "The multipling used #{@@operations[:multiply]} times"
     end
 
 
@@ -62,7 +65,7 @@ comp1*comp2
 comp3=Complexnum.new(3,7)
 comp4=Complexnum.new(3,7)
 
-arr=[comp1,comp2,comp3,comp4]
+arr=[comp1,comp2,comp3]
 Complexnum.bulk_add(arr)
 Complexnum.bulk_multiply(arr)
 Complexnum.get_stats
