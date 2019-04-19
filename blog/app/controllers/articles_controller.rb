@@ -22,6 +22,7 @@ class ArticlesController < ApplicationController
             redirect_to @article
           else
             render 'new'
+            #redirect_to new_article_path
           end
     end
 
@@ -32,6 +33,7 @@ class ArticlesController < ApplicationController
           redirect_to @article
         else
           render 'edit'
+          #redirect_to edit_article_path(@article)
         end
     end
 
